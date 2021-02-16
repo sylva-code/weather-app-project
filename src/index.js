@@ -47,10 +47,13 @@ axios.get(url).then(currentWeather);
 
 function currentWeather(response) { 
   console.log(response);
-  document.querySelector("#current-temperature").innerHTML = Math.round(response.data.main.temp);
   document.querySelector("#city-name").innerHTML = response.data.name;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#current-weather-emoji").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   document.querySelector("#current-conditions").innerHTML = response.data.weather[0].main;
+  document.querySelector("#current-temperature").innerHTML = Math.round(response.data.main.temp);
+  document.querySelector("#feels-like").innerHTML = Math.round(response.data.main.feels_like);
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed * 3.6);
 } 
 
 searchCity("London");

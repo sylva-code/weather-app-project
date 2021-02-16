@@ -40,21 +40,21 @@
       <div class="col">
         <div class="row temperature">
           <div class="col-4">
-            <i class="fas fa-cloud"></i> <br />
+            <span><img src="" alt="" id="current-weather-emoji"></span> <br />
             <span id="current-conditions">Cloudy</span>
           </div>
           <div class="col-8">
             <h1>
-              <span id="current-temperature">5</span>
-              <span class="degrees">°C|°F</span>
+              <span id="current-temperature">5</span><span class="degrees">°C</span>
             </h1>
           </div>
         </div>
       </div>
       <div class="col">
         <p class="extras">
-          Precipitation: 73% <br />
-          Humidity: <span id="humidity">55</span>%
+          Feels like: <span id="feels-like"></span>°<br />
+          Humidity: <span id="humidity"></span>% <br />
+          Wind: <span id="wind"></span> km/h
         </p>
       </div>
     </div>
@@ -111,7 +111,7 @@
 
   <p class="coder">
     <a href="https://github.com/sylva-code/weather-app-project" target="blank">Open-source code</a>
-    by Sylva Parizkova
+    by Sylva
   </p>
 
   <script src="src/index.js"></script>
