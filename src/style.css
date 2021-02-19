@@ -64,9 +64,19 @@ h3 {
   margin-top: 8px;
 }
 
+.forecast-short img {
+  height: 50px;
+  width: 50px;
+}
+
 .forecast-long {
   text-align: center;
   font-size: 19px;
+}
+
+.forecast-long img {
+  height: 70px;
+  width: 70px;
 }
 
 .coder {
