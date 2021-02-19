@@ -79,11 +79,12 @@ axios.get(url).then(showForecast);
 
 function currentWeather(response) { 
   //console.log(response);
+  celciusTemperature = response.data.main.temp;
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   document.querySelector("#current-weather-icon").setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#current-conditions").innerHTML = response.data.weather[0].main;
-  document.querySelector("#current-temperature").innerHTML = Math.round(response.data.main.temp);
+  document.querySelector("#current-temperature").innerHTML = Math.round(celciusTemperature);
   document.querySelector("#feels-like").innerHTML = Math.round(response.data.main.feels_like);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed * 3.6);
@@ -104,7 +105,7 @@ function showForecast(response) {
     document.querySelector("#forecast-short").innerHTML += `
     <div class="col-2">
       ${formatHours(forecast.dt * 1000)} <br />
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"> <br />
+      <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"> <br />
       ${Math.round(forecast.main.temp)}°
     </div>
     `; 
@@ -120,12 +121,34 @@ function showDailyForecast(response) {
     document.querySelector("#forecast-long").innerHTML += `
     <div class="col">
       ${formatWeekday(dailyForecast.dt * 1000)} <br />
-      <img src="http://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}@2x.png"> <br />
+      <img src="https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}@2x.png"> <br />
       ${Math.round(dailyForecast.temp.max)}°/${Math.round(dailyForecast.temp.min)}°
     </div>
     `; 
   }
 }
 
-searchCity("London");
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let fahrenheitTemperature = (celciusTemperature * 9/5) + 32;
+  document.querySelector("#current-temperature").innerHTML = Math.round(fahrenheitTemperature);
+}
 
+function convertToCelsius(event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  document.querySelector("#current-temperature").innerHTML = Math.round(celciusTemperature);
+}
+
+let celciusTemperature = null;
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", convertToFahrenheit);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", convertToCelsius);
+
+searchCity("London");

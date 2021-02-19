@@ -1,7 +1,7 @@
 .container {
   max-width: 600px;
   margin-top: 100px;
-  padding: 30px;
+  padding: 25px;
   border: solid 2px #393e46;
   background: rgba(135, 206, 250, 0.6);
   font-family: "Open Sans", sans-serif;
@@ -39,17 +39,27 @@ h3 {
 #current-conditions {
   position: relative;
   bottom: 15px;
+  font-size: 18px;
 }
 
 .temperature h1 {
-  font-size: 50px;
+  font-size: 55px;
 }
 
 .degrees {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: normal;
   position: relative;
   bottom: 25px;
+}
+
+.degrees a {
+  text-decoration: none;
+  color: #6c757d;
+}
+
+.degrees .active {
+  color: black;
 }
 
 .extras {
