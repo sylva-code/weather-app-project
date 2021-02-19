@@ -78,10 +78,9 @@ axios.get(url).then(showForecast);
 }
 
 function currentWeather(response) { 
-  //console.log(response);
   celciusTemperature = response.data.main.temp;
   document.querySelector("#city-name").innerHTML = response.data.name;
-  document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#current-weather-icon").setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   document.querySelector("#current-weather-icon").setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#current-conditions").innerHTML = response.data.weather[0].main;
   document.querySelector("#current-temperature").innerHTML = Math.round(celciusTemperature);
@@ -97,7 +96,6 @@ function currentWeather(response) {
 } 
 
 function showForecast(response) {
-  //console.log(response.data);
   document.querySelector("#forecast-short").innerHTML = null;
 
   for (let index = 0; index < 3; index++) {
@@ -113,7 +111,6 @@ function showForecast(response) {
 }
 
 function showDailyForecast(response) {
-  //console.log(response.data.daily);
   document.querySelector("#forecast-long").innerHTML = null;
 
   for (let index = 1; index < 6; index++) {
